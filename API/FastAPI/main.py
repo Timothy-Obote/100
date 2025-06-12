@@ -25,11 +25,11 @@ def get_posts():
 
 @app.post("/posts")
 #def create_post(payload: dict = Body(...)):
-def create_posts(new_post: Post ):
-    print(new_post.published)
-    print(new_post.dict())
+def create_posts(post: Post ):
+    print(post.published)
+    print(post.dict())
     #return {"new-post" : f"title {payload['title']} content:{payload['content']}"}
-    return {"data": "new_post"}
+    return {"data": "post"}
     #print(new_post) 
     
 #title, str, content str, category, Bool published 
