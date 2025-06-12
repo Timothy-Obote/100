@@ -20,7 +20,7 @@ def read_root():
 
 @app.get("/posts")
 def get_posts():
-    return {"data": "This is your posts"}
+    return {"data": my_posts}
 
 
 @app.post("/posts")
