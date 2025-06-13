@@ -14,13 +14,17 @@ class Post(BaseModel):
     published: bool = True
     rating: Optional[int] = None
     
-my_posts = [{"title": "title of post 1", "content":"content of post 2", "id": 2},{"title":"favourite foods","content": "I like pizza", "id": 2 }]
+my_posts = [{"title": "title of post 1", "content":"content of post 2", "id": 1},{"title":"favourite foods","content": "I like pizza", "id": 2 }]
 
 def find_post(id):
     for p in my_posts:
-        if p["id"] == id:
+        if p['id'] == id:
             return p
-
+        
+def find_index_post(id):
+    for i,p in enumerate(my_posts):
+        if p['id'] == id:
+            return i
 
 @app.get("/")
 def read_root():
@@ -62,6 +66,17 @@ def get_post(id: int, response: Response):
         #response.status_code = status.HTTP_404_NOT_FOUND
         #return {'message': f"post with id: {id} was not found"}
     return{"post_detail": post}
+
+
+@app.delete("/posts/{id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_post(id: int):
+    #deleting post
+    #find the index in the array that has the required ID
+    #my_posts.pop(index)
+    index = find_index_post(id)
+    
+    my_posts.pop(index)
+    return{'message' : 'post was succesfully deleted'}
 
 
     
