@@ -44,10 +44,20 @@ def create_posts(post: Post ):
     return {"data": post_dict}
     #print(new_post) 
     
+    
+@app.get("/posts/latest")
+def get_latest_post():
+    post = my_posts[len(my_posts)-1]
+    return {"detail" : post}
+
+
 #title, str, content str, category, Bool published 
 @app.get("/posts/{id}")
-def get_post(id):
-    print(id)
+def get_post(id: int):
+    #print(type(id))
     post = find_post(id)
+    print(post)
     return{"post_detail": post}
+
+
     
