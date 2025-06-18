@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ChatRoom from "./components/ChatRoom";
 
 function App() {
+  const [username, setUsername] = useState("");
+  const [chatReady, setChatReady] = useState(false);
+
+  const handleJoin = () => {
+    if (username.trim() !== "") setChatReady(true);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!chatReady ? (
+        <div>
+          <h2>Enter Username</h2>
+          <input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <button onClick={handleJoin}>Join Chat</button>
+        </div>
+      ) : (
+        <ChatRoom username={username} />
+      )}
     </div>
   );
 }
