@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ChatRoom from "./components/ChatRoom";
+import "./style.css";
+
 
 function App() {
   const [username, setUsername] = useState("");
