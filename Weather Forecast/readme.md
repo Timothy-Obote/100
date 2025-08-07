@@ -11,7 +11,15 @@ A simple Python script that checks the weather forecast using the [OpenWeatherMa
 - Sends SMS notifications if rain is likely.
 
 ---
+🧠 How It Works
+The script calls the OpenWeatherMap API to get a 5-day weather forecast.
 
+It checks the next 4 forecast blocks (each ~3 hours apart).
+
+If the weather condition code is below 700, it predicts precipitation (rain/snow).
+
+If rain is expected, it sends an SMS alert using Twilio.
+----
 ## 📦 Requirements
 
 - Python 3.7 or higher
@@ -38,41 +46,6 @@ from_ = "+Your_Twilio_Number"
 to = "+Your_Verified_Recipient_Number"
 💡 Best Practice: Use environment variables or a .env file to manage your secrets. You can load them with python-dotenv.
 
-🧠 How It Works
-The script calls the OpenWeatherMap API to get a 5-day weather forecast.
 
-It checks the next 4 forecast blocks (each ~3 hours apart).
 
-If the weather condition code is below 700, it predicts precipitation (rain/snow).
-
-If rain is expected, it sends an SMS alert using Twilio.
-
-💻 Example Output
-bash
-Copy
-Edit
-500
-queued
-500 → Light rain (weather condition code)
-
-queued → SMS successfully sent and queued by Twilio
-
-🛑 Disclaimer
-This project is for educational and testing purposes only.
-Avoid hardcoding credentials in production environments.
-
-📬 Future Improvements
-Load configuration from a .env file
-
-Make location dynamically configurable
-
-Schedule the script to run automatically (via cron or Task Scheduler)
-
-Add robust error handling and logging
-
-🧑‍💻 Author
-Built by [Your Name]
-
-yaml
-Copy
 Edit
