@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> 0cfb4044226384d5406f81de86d428a4d68b1fad
+python fundamentals 
